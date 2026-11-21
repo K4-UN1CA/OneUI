@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K4_UN1CA • Galaxy A52s 5G</title>
+    <title>K4_UN1CA • One UI 9 for Galaxy A52s 5G</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -12,303 +12,556 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top left, #16113a 0%, #09090e 45%, #0d0a1f 100%);
+            background-color: #05050a;
+            color: #f3f4f6;
+            overflow-x: hidden;
         }
-        .glow-card {
-            box-shadow: 0 0 28px rgba(139, 92, 246, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+        /* Animated Ambient Liquid Orbs */
+        @keyframes floatOrb1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -30px) scale(1.08); }
         }
-        .neon-glow {
-            box-shadow: 0 0 28px rgba(139, 92, 246, 0.2);
+        @keyframes floatOrb2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-35px, 40px) scale(1.05); }
         }
-        .oneui-pill {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.4));
-            box-shadow: 0 0 14px rgba(139, 92, 246, 0.4);
+        .orb-1 {
+            animation: floatOrb1 14s ease-in-out infinite;
+            will-change: transform;
         }
-        /* Custom sleek scrollbar for tabs */
-        .custom-scroll::-webkit-scrollbar {
-            width: 5px;
+        .orb-2 {
+            animation: floatOrb2 18s ease-in-out infinite;
+            will-change: transform;
         }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+
+        /* Authentic Liquid Glass Surface */
+        .liquid-glass {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.55),
+                inset 0 1px 1px rgba(255, 255, 255, 0.28),
+                inset 0 -1px 1px rgba(139, 92, 246, 0.15);
         }
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(139, 92, 246, 0.4);
-            border-radius: 10px;
+
+        .liquid-glass-card {
+            background: linear-gradient(160deg, rgba(28, 24, 56, 0.55) 0%, rgba(13, 12, 28, 0.45) 100%);
+            backdrop-filter: blur(18px) saturate(150%);
+            -webkit-backdrop-filter: blur(18px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .liquid-glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow:
+                0 18px 45px rgba(124, 58, 237, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        /* Glossy Specular Pill & Buttons */
+        .liquid-pill {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.45) 0%, rgba(56, 189, 248, 0.4) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 16px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        .liquid-btn-primary {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.85) 0%, rgba(79, 70, 229, 0.85) 50%, rgba(14, 165, 233, 0.85) 100%);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            box-shadow:
+                0 10px 30px rgba(124, 58, 237, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+        .liquid-btn-primary:hover {
+            box-shadow:
+                0 14px 38px rgba(124, 58, 237, 0.6),
+                inset 0 1px 1px rgba(255, 255, 255, 0.65);
+        }
+
+        /* Subtle Starfield / Grid Backdrop */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
         }
     </style>
 </head>
-<body class="text-gray-100 min-h-screen py-6 md:py-10 px-4 md:px-8 flex flex-col justify-between">
+<body class="relative min-h-screen bg-grid-pattern selection:bg-violet-500/30 selection:text-white">
 
-    <div>
-        <!-- Top Badge Header -->
-        <div class="max-w-md md:max-w-6xl mx-auto mb-6 md:mb-8 text-center">
-            <div class="inline-flex items-center justify-between gap-3 md:gap-4 bg-[#1b1731]/85 backdrop-blur-md px-4 md:px-6 py-2 md:py-2.5 rounded-full border border-violet-500/30 neon-glow">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse"></span>
-                    <span class="text-xs md:text-sm font-extrabold tracking-wider bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text text-transparent">K4_UN1CA</span>
-                </div>
-                
-                <span class="text-white/20 text-xs">|</span>
-                
-                <span class="text-xs md:text-sm font-bold text-gray-200 tracking-wide">Galaxy A52s 5G</span>
-                
-                <!-- Unique One UI Pill -->
-                <span class="oneui-pill text-[11px] md:text-xs font-extrabold tracking-wide px-2.5 md:px-3 py-0.5 rounded-full text-white border border-violet-400/40">
-                    One UI
-                </span>
+    <!-- Ambient Background Liquid Orbs (Fixed so glass refracts them while scrolling) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="orb-1 absolute -top-24 -left-20 w-80 md:w-[32rem] h-80 md:h-[32rem] rounded-full bg-violet-600/25 blur-[100px]"></div>
+        <div class="orb-2 absolute top-1/3 -right-24 w-80 md:w-[30rem] h-80 md:h-[30rem] rounded-full bg-cyan-500/20 blur-[110px]"></div>
+        <div class="orb-1 absolute -bottom-32 left-1/4 w-96 md:w-[34rem] h-96 md:h-[34rem] rounded-full bg-fuchsia-600/20 blur-[120px]"></div>
+    </div>
+
+    <!-- =========================================================
+         SECTION 1: STICKY LIQUID GLASS NAVBAR
+         ========================================================= -->
+    <header class="sticky top-3 z-50 px-4 md:px-8">
+        <nav class="max-w-6xl mx-auto liquid-glass rounded-full px-4 md:px-6 py-2.5 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="#" class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] animate-pulse"></span>
+                <span class="font-extrabold text-sm md:text-base tracking-wider bg-gradient-to-r from-white via-violet-200 to-cyan-200 bg-clip-text text-transparent">K4_UN1CA</span>
+                <span class="liquid-pill text-[10px] md:text-[11px] font-extrabold px-2.5 py-0.5 rounded-full text-white">One UI 9</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center gap-7 text-xs font-semibold text-gray-300">
+                <a href="#preview" class="hover:text-white transition">UI Preview</a>
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#download" class="hover:text-white transition">Download</a>
+                <a href="#install" class="hover:text-white transition">Flash Guide</a>
             </div>
-        </div>
 
-        <!-- Main Responsive Grid Container -->
-        <div class="max-w-md md:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 items-start">
-            
-            <!-- LEFT COLUMN (5 cols on Desktop): Pure SVG Graphic Banner + Device Specs + Links -->
-            <div class="md:col-span-5 glow-card bg-[#110e24]/70 backdrop-blur-lg border border-white/5 rounded-3xl p-4 md:p-5 text-center overflow-hidden relative">
-                <div class="absolute -top-16 -left-16 w-40 h-40 bg-violet-600/15 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-16 -right-16 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <!-- Action Button -->
+            <a href="#download" class="liquid-btn-primary text-xs font-bold px-4 py-2 rounded-full text-white flex items-center gap-1.5 transition active:scale-95">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Get Build</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- =========================================================
+             SECTION 2: FULL-LENGTH FLAGSHIP HERO SECTION
+             ========================================================= -->
+        <section class="max-w-6xl mx-auto px-4 md:px-8 pt-12 pb-16 md:pt-20 md:pb-24 text-center">
+            <!-- Top Spec Pill -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-2 liquid-glass px-4 py-1.5 rounded-full text-xs font-semibold text-violet-200 mb-6">
+                <span>Samsung Galaxy A52s 5G (a52sxq)</span>
+                <span class="text-white/25">•</span>
+                <span class="text-cyan-300">Android 17</span>
+                <span class="text-white/25">•</span>
+                <span>Maintained by <strong>kusti420</strong></span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.12] max-w-4xl mx-auto">
+                Experience <span class="bg-gradient-to-r from-violet-300 via-fuchsia-200 to-cyan-300 bg-clip-text text-transparent">Liquid One UI 9</span> Reimagined for A52s 5G
+            </h1>
+
+            <p class="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-5 leading-relaxed">
+                An unofficial community fork bringing flagship Galaxy S25/S22 AI features, EROFS speed, 120 FPS gaming spoofs, and seamless OTA updates to SM-A528B.
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-8">
+                <a href="#download" class="w-full sm:w-auto liquid-btn-primary px-7 py-4 rounded-2xl font-extrabold text-sm md:text-base text-white flex items-center justify-center gap-2.5 transition transform active:scale-95">
+                    <i data-lucide="download-cloud" class="w-5 h-5"></i>
+                    <span id="heroBtnText">Download Build 9.3.139</span>
+                </a>
+                <a href="#features" class="w-full sm:w-auto liquid-glass-card px-7 py-4 rounded-2xl font-bold text-sm md:text-base text-gray-200 hover:text-white flex items-center justify-center gap-2 transition active:scale-95">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-cyan-300"></i>
+                    <span>Explore Features</span>
+                </a>
+            </div>
+
+            <!-- Glass Metrics Strip -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto mt-12">
+                <div class="liquid-glass-card rounded-2xl p-4 text-center">
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Architecture</p>
+                    <p class="text-base md:text-lg font-extrabold text-white mt-1">EROFS + 5.4 Kernel</p>
+                </div>
+                <div class="liquid-glass-card rounded-2xl p-4 text-center">
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Gaming Spoof</p>
+                    <p class="text-base md:text-lg font-extrabold text-cyan-300 mt-1">120 FPS Unlocked</p>
+                </div>
+                <div class="liquid-glass-card rounded-2xl p-4 text-center">
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Updates</p>
+                    <p class="text-base md:text-lg font-extrabold text-violet-300 mt-1">Built-in OTA</p>
+                </div>
+                <div class="liquid-glass-card rounded-2xl p-4 text-center">
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Base Firmware</p>
+                    <p class="text-base md:text-lg font-extrabold text-amber-300 mt-1">FWK4 (BIT 5)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 3: INTERACTIVE PURE-SVG ONE UI 9 SHOWCASE
+             ========================================================= -->
+        <section id="preview" class="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16">
+            <div class="text-center mb-10">
+                <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-300">Visual Experience</span>
+                <h2 class="text-2xl md:text-4xl font-black mt-1.5">One UI 9 Interface Preview</h2>
+                <p class="text-xs md:text-sm text-gray-400 mt-2">Pure vector UI showcase — zero external assets, crisp at any resolution.</p>
+            </div>
+
+            <!-- 3 Interactive Vector Phone Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                 
-                <!-- Pure HTML/SVG Custom Graphic Banner (Zero External Image Files) -->
-                <div class="relative mb-4 rounded-2xl overflow-hidden border border-violet-500/20 shadow-[0_12px_32px_rgba(124,58,237,0.22)] bg-gradient-to-br from-[#1b123b] via-[#121633] to-[#0b132b] p-5 flex items-center justify-between gap-3 text-left">
-                    <!-- Decorative SVG Glow Grid -->
-                    <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Screen 1: Lockscreen & Now Bar -->
+                <div class="liquid-glass-card rounded-3xl p-6 flex flex-col items-center text-center">
+                    <svg width="170" height="310" viewBox="0 0 170 310" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-[0_14px_28px_rgba(139,92,246,0.3)] mb-5">
+                        <rect x="3" y="3" width="164" height="304" rx="26" fill="#07070c" stroke="url(#rim1)" stroke-width="3"/>
+                        <rect x="9" y="9" width="152" height="292" rx="21" fill="url(#bg1)"/>
+                        <!-- Punch Hole -->
+                        <circle cx="85" cy="21" r="4" fill="#05050a"/>
+                        <!-- Lock Clock -->
+                        <text x="85" y="74" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">09:36</text>
+                        <text x="85" y="92" text-anchor="middle" fill="#c4b5fd" font-size="10" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Sat, 21 Nov • Galaxy AI</text>
+                        <!-- Glass Widget Card -->
+                        <rect x="22" y="112" width="126" height="58" rx="14" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)"/>
+                        <circle cx="44" cy="141" r="12" fill="url(#orb1)"/>
+                        <rect x="64" y="132" width="68" height="6" rx="3" fill="#ffffff" opacity="0.85"/>
+                        <rect x="64" y="144" width="46" height="5" rx="2.5" fill="#c4b5fd" opacity="0.6"/>
+                        <!-- Now Bar Pill -->
+                        <rect x="34" y="264" width="102" height="22" rx="11" fill="rgba(139,92,246,0.45)" stroke="rgba(255,255,255,0.35)"/>
+                        <text x="85" y="278" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Now Brief • 120Hz</text>
                         <defs>
-                            <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                                <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="0.6"/>
-                            </pattern>
+                            <linearGradient id="rim1" x1="0" y1="0" x2="170" y2="310" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#38bdf8"/>
+                            </linearGradient>
+                            <linearGradient id="bg1" x1="9" y1="9" x2="161" y2="301" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#2e1065"/><stop offset="0.55" stop-color="#17153b"/><stop offset="1" stop-color="#090d16"/>
+                            </linearGradient>
+                            <linearGradient id="orb1" x1="32" y1="129" x2="56" y2="153" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#f472b6"/><stop offset="1" stop-color="#38bdf8"/>
+                            </linearGradient>
                         </defs>
-                        <rect width="100%" height="100%" fill="url(#grid)" />
                     </svg>
-
-                    <!-- Left Text Side -->
-                    <div class="relative z-10 flex-1">
-                        <span class="inline-block text-[10px] uppercase tracking-[0.2em] text-cyan-300 font-bold bg-cyan-500/10 border border-cyan-400/20 px-2.5 py-0.5 rounded-full mb-2">Samsung A52s 5G</span>
-                        <h1 class="text-3xl lg:text-4xl font-black tracking-tight bg-gradient-to-r from-white via-violet-200 to-cyan-300 bg-clip-text text-transparent">K4_UN1CA</h1>
-                        <p class="text-xs text-gray-300 mt-1 font-medium">Android 17 • EROFS • Galaxy AI</p>
-                        
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] font-semibold bg-white/5 border border-white/10 px-2 py-0.5 rounded-md text-violet-200">5.4 Kernel</span>
-                            <span class="text-[10px] font-semibold bg-white/5 border border-white/10 px-2 py-0.5 rounded-md text-violet-200">OTA Ready</span>
-                        </div>
-                    </div>
-
-                    <!-- Right Custom Vector Phone Illustration (SVG) -->
-                    <div class="relative z-10 shrink-0">
-                        <svg width="86" height="156" viewBox="0 0 86 156" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-[0_8px_16px_rgba(139,92,246,0.4)]">
-                            <!-- Phone Outer Frame -->
-                            <rect x="2" y="2" width="82" height="152" rx="14" fill="#09090f" stroke="url(#phoneBorder)" stroke-width="2.5"/>
-                            <!-- Screen Wallpaper Gradient -->
-                            <rect x="6" y="6" width="74" height="144" rx="11" fill="url(#screenGrad)"/>
-                            <!-- Glowing OneUI Wave Circle -->
-                            <circle cx="43" cy="68" r="24" fill="url(#orbGrad)" opacity="0.85"/>
-                            <circle cx="43" cy="68" r="14" fill="#0f172a" opacity="0.45"/>
-                            <!-- One UI Text inside Screen -->
-                            <text x="43" y="106" text-anchor="middle" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" letter-spacing="0.5">One UI 9</text>
-                            <rect x="25" y="114" width="36" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
-                            <!-- Punch Hole Camera -->
-                            <circle cx="43" cy="13" r="2.3" fill="#09090f"/>
-                            <!-- Bottom Gesture Pill -->
-                            <rect x="31" y="143" width="24" height="2.5" rx="1.25" fill="rgba(255,255,255,0.6)"/>
-                            <defs>
-                                <linearGradient id="phoneBorder" x1="0" y1="0" x2="86" y2="156" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#a78bfa"/>
-                                    <stop offset="1" stop-color="#38bdf8"/>
-                                </linearGradient>
-                                <linearGradient id="screenGrad" x1="6" y1="6" x2="80" y2="150" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#2e1065"/>
-                                    <stop offset="0.5" stop-color="#1e1b4b"/>
-                                    <stop offset="1" stop-color="#0f172a"/>
-                                </linearGradient>
-                                <linearGradient id="orbGrad" x1="19" y1="44" x2="67" y2="92" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#ec4899"/>
-                                    <stop offset="0.5" stop-color="#8b5cf6"/>
-                                    <stop offset="1" stop-color="#06b6d4"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
+                    <h3 class="font-extrabold text-base text-white">Lockscreen & Now Brief</h3>
+                    <p class="text-xs text-gray-400 mt-1">Dynamic lockscreen widgets, AOD clock transitions & Galaxy AI Now Brief.</p>
                 </div>
 
-                <!-- Device & Base Firmware Metadata -->
-                <div class="grid grid-cols-2 gap-2.5 text-left bg-black/30 p-3.5 rounded-2xl text-xs md:text-sm border border-white/5">
-                    <div>
-                        <p class="text-gray-400 text-[11px] font-semibold tracking-wider">CODENAME</p>
-                        <p class="font-bold text-violet-300 mt-0.5">a52sxq (SM-A528B)</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-400 text-[11px] font-semibold tracking-wider">MAINTAINER</p>
-                        <p class="font-bold text-violet-300 mt-0.5">kusti420</p>
-                    </div>
-                    <div class="col-span-2 pt-2 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-gray-400 text-[11px] font-semibold tracking-wider">REQUIRED BASE FIRMWARE</span>
-                        <span class="font-mono text-xs font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">A528BXXU5FWK4 (BIT 5)</span>
-                    </div>
+                <!-- Screen 2: Center Hero Phone (Quick Settings Live Blur) -->
+                <div class="liquid-glass rounded-3xl p-6 md:p-7 flex flex-col items-center text-center border-violet-400/30">
+                    <span class="liquid-pill text-[10px] font-extrabold uppercase tracking-wider px-3 py-0.5 rounded-full text-white mb-4">Native Live Blur</span>
+                    <svg width="184" height="330" viewBox="0 0 184 330" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-[0_18px_35px_rgba(56,189,248,0.3)] mb-5">
+                        <rect x="3" y="3" width="178" height="324" rx="28" fill="#07070c" stroke="url(#rim2)" stroke-width="3"/>
+                        <rect x="9" y="9" width="166" height="312" rx="23" fill="url(#bg2)"/>
+                        <circle cx="92" cy="21" r="4" fill="#05050a"/>
+                        <!-- QS Pill Toggles Row 1 -->
+                        <rect x="20" y="42" width="68" height="34" rx="17" fill="#7c3aed"/>
+                        <text x="54" y="63" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Wi-Fi 6</text>
+                        <rect x="96" y="42" width="68" height="34" rx="17" fill="#0284c7"/>
+                        <text x="130" y="63" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">5G Data</text>
+                        <!-- QS Glass Panel -->
+                        <rect x="20" y="86" width="144" height="96" rx="18" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.18)"/>
+                        <circle cx="46" cy="114" r="13" fill="#8b5cf6"/>
+                        <circle cx="92" cy="114" r="13" fill="rgba(255,255,255,0.16)"/>
+                        <circle cx="138" cy="114" r="13" fill="#06b6d4"/>
+                        <circle cx="46" cy="154" r="13" fill="rgba(255,255,255,0.16)"/>
+                        <circle cx="92" cy="154" r="13" fill="#ec4899"/>
+                        <circle cx="138" cy="154" r="13" fill="rgba(255,255,255,0.16)"/>
+                        <!-- Brightness Slider -->
+                        <rect x="20" y="194" width="144" height="26" rx="13" fill="rgba(255,255,255,0.12)"/>
+                        <rect x="20" y="194" width="108" height="26" rx="13" fill="url(#sliderGrad)"/>
+                        <!-- Media Glass Tile -->
+                        <rect x="20" y="230" width="144" height="54" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/>
+                        <text x="92" y="254" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">Vulkan Renderer Active</text>
+                        <text x="92" y="269" text-anchor="middle" fill="#7dd3fc" font-size="8.5" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">120 FPS Spoof • Extra Brightness</text>
+                        <rect x="66" y="308" width="52" height="4" rx="2" fill="rgba(255,255,255,0.55)"/>
+                        <defs>
+                            <linearGradient id="rim2" x1="0" y1="0" x2="184" y2="330" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#38bdf8"/><stop offset="1" stop-color="#c084fc"/>
+                            </linearGradient>
+                            <linearGradient id="bg2" x1="9" y1="9" x2="175" y2="321" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1e1b4b"/><stop offset="0.5" stop-color="#0f172a"/><stop offset="1" stop-color="#1e1035"/>
+                            </linearGradient>
+                            <linearGradient id="sliderGrad" x1="20" y1="194" x2="128" y2="220" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#38bdf8"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <h3 class="font-extrabold text-lg text-white">One UI 9 Control Center</h3>
+                    <p class="text-xs text-gray-300 mt-1">Real-time gaussian blur toggle, Vulkan UI rendering & silky-smooth animations.</p>
                 </div>
 
-                <!-- Support & Source Buttons -->
-                <div class="grid grid-cols-3 gap-2.5 mt-4">
-                    <a href="https://t.me/IchthysOS" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-[#1b1640] hover:bg-violet-900/40 text-xs md:text-sm font-semibold py-3 px-2 rounded-xl border border-violet-500/20 transition duration-300 active:scale-95">
-                        <i data-lucide="send" class="w-4 h-4 text-violet-400"></i> Telegram
-                    </a>
-                    <a href="https://github.com/kusti420/k4_un1ca" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 text-xs md:text-sm font-semibold py-3 px-2 rounded-xl border border-white/10 transition duration-300 active:scale-95 text-gray-200">
-                        <i data-lucide="github" class="w-4 h-4 text-gray-300"></i> Source
-                    </a>
-                    <a href="https://ko-fi.com/kusti420/goal?g=0#checkoutModal" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-[#2d1b09] hover:bg-amber-900/40 text-xs md:text-sm font-semibold py-3 px-2 rounded-xl border border-amber-500/20 transition duration-300 active:scale-95 text-amber-200">
-                        <i data-lucide="coffee" class="w-4 h-4 text-amber-400"></i> Donate
-                    </a>
+                <!-- Screen 3: K4_UN1CA OTA & Tweaks -->
+                <div class="liquid-glass-card rounded-3xl p-6 flex flex-col items-center text-center">
+                    <svg width="170" height="310" viewBox="0 0 170 310" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-[0_14px_28px_rgba(139,92,246,0.3)] mb-5">
+                        <rect x="3" y="3" width="164" height="304" rx="26" fill="#07070c" stroke="url(#rim3)" stroke-width="3"/>
+                        <rect x="9" y="9" width="152" height="292" rx="21" fill="url(#bg3)"/>
+                        <circle cx="85" cy="21" r="4" fill="#05050a"/>
+                        <text x="85" y="54" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">Software Update</text>
+                        <!-- OTA Card -->
+                        <rect x="20" y="70" width="130" height="92" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(167,139,250,0.35)"/>
+                        <circle cx="85" cy="96" r="14" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.5"/>
+                        <path d="M80 96L84 100L91 92" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="85" y="126" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">K4_UN1CA 9.3.139</text>
+                        <text x="85" y="141" text-anchor="middle" fill="#94a3b8" font-size="8.5" font-family="Plus Jakarta Sans, sans-serif">OTA Updater • TWRP Ready</text>
+                        <!-- Toggles List -->
+                        <rect x="20" y="174" width="130" height="28" rx="10" fill="rgba(255,255,255,0.06)"/>
+                        <text x="30" y="191" fill="#e2e8f0" font-size="8.5" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Infinix GT 30 Pro Spoof</text>
+                        <rect x="124" y="182" width="18" height="10" rx="5" fill="#8b5cf6"/>
+                        <rect x="20" y="210" width="130" height="28" rx="10" fill="rgba(255,255,255,0.06)"/>
+                        <text x="30" y="227" fill="#e2e8f0" font-size="8.5" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Unlimited G-Photos</text>
+                        <rect x="124" y="218" width="18" height="10" rx="5" fill="#06b6d4"/>
+                        <rect x="20" y="246" width="130" height="28" rx="10" fill="rgba(255,255,255,0.06)"/>
+                        <text x="30" y="263" fill="#e2e8f0" font-size="8.5" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Play Integrity + Knox</text>
+                        <rect x="124" y="254" width="18" height="10" rx="5" fill="#10b981"/>
+                        <defs>
+                            <linearGradient id="rim3" x1="0" y1="0" x2="170" y2="310" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#c084fc"/><stop offset="1" stop-color="#38bdf8"/>
+                            </linearGradient>
+                            <linearGradient id="bg3" x1="9" y1="9" x2="161" y2="301" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#131129"/><stop offset="1" stop-color="#090d16"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <h3 class="font-extrabold text-base text-white">OTA & UN1CA Tweaks</h3>
+                    <p class="text-xs text-gray-400 mt-1">Direct R2 OTA updates, FPS unlock toggle, Play Integrity & KnoxPatch built-in.</p>
                 </div>
+
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 4: 6-CARD BLAZING FEATURES GRID
+             ========================================================= -->
+        <section id="features" class="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16">
+            <div class="text-center mb-10">
+                <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-violet-300">Packed With Power</span>
+                <h2 class="text-2xl md:text-4xl font-black mt-1.5">Flagship Features Included</h2>
+                <p class="text-xs md:text-sm text-gray-400 mt-2">Everything from Galaxy AI to system-level tweaks baked right into the ROM.</p>
             </div>
 
-            <!-- RIGHT COLUMN (7 cols on Desktop): Download Hub + Rich Tabs -->
-            <div class="md:col-span-7 space-y-5 md:space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Feature 1 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">Full Galaxy AI Suite</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Audio Eraser, Object & Reflection Eraser, Photo Assist, Note & Transcript Assist, Browsing Assist, Interpreter, and Now Brief.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="gamepad-2" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">120 FPS Gaming Spoof</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Dedicated <strong>Infinix GT 30 Pro</strong> device spoof profile & Games FPS unlock toggle for ultra graphics and 120 FPS in BGMI, PUBG, CODM & MLBB.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="cloud" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">Unlimited Google Photos</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Built-in unlimited backup storage spoofing on Google Photos without needing extra root modules.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">Play Integrity & KnoxPatch</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Integrated Play Integrity Fix, TrickyStore key attestation spoof options, KnoxPatch (Secure Folder & Private Album), and Hide My Applist.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">Integrated OTA Updater</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Receive incremental and full updates straight in Settings with automatic TWRP recovery installation support.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="liquid-glass-card rounded-3xl p-6">
+                    <div class="w-11 h-11 rounded-2xl liquid-pill flex items-center justify-center mb-4">
+                        <i data-lucide="layers" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">EROFS & Custom CSC</h3>
+                    <p class="text-xs md:text-sm text-gray-300 mt-2 leading-relaxed">
+                        Read-only EROFS partitions for faster app launches, native Call Recording, status bar network speed meter, Dual Messenger for all apps & debloated system.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 5: LIQUID GLASS DOWNLOAD HUB & CHANGELOG / GUIDE
+             ========================================================= -->
+        <section id="download" class="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 
-                <!-- Download HUB Card -->
-                <div class="glow-card bg-[#110e24]/70 backdrop-blur-lg border border-violet-500/20 rounded-3xl p-5 md:p-6 relative">
-                    <div class="absolute inset-0 bg-gradient-to-b from-violet-600/5 to-transparent rounded-3xl pointer-events-none"></div>
-                    
-                    <!-- Header: Latest Build & Size -->
-                    <div class="flex justify-between items-start mb-4">
+                <!-- LEFT 7 COLS: MAIN LIQUID GLASS DOWNLOAD CENTER -->
+                <div class="lg:col-span-7 liquid-glass rounded-3xl p-6 md:p-8 relative overflow-hidden">
+                    <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
                         <div>
-                            <span class="text-[11px] uppercase font-extrabold tracking-widest text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md">ROM RELEASE</span>
-                            <h2 id="buildTitle" class="text-2xl md:text-3xl font-extrabold mt-1.5 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Latest Build 9.3.139</h2>
+                            <span class="liquid-pill text-[11px] uppercase font-extrabold tracking-widest px-3 py-1 rounded-md text-white">Official R2 Mirror</span>
+                            <h2 id="buildTitle" class="text-2xl sm:text-3xl md:text-4xl font-black mt-2 text-white">Latest Build 9.3.139</h2>
                         </div>
-                        <div class="text-right">
-                            <p class="text-xs text-gray-400">SIZE</p>
-                            <p id="fileSize" class="font-black text-violet-300 text-lg md:text-xl">6.54 GB</p>
+                        <div class="liquid-glass-card px-4 py-2.5 rounded-2xl text-right">
+                            <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Archive Size</p>
+                            <p id="fileSize" class="font-black text-cyan-300 text-xl md:text-2xl">6.54 GB</p>
                         </div>
                     </div>
 
-                    <!-- Compact Detail Rows -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-5 text-sm">
-                        <div class="bg-black/30 p-3 rounded-xl border border-white/5 flex justify-between items-center">
-                            <span class="text-gray-400">Version:</span>
-                            <span id="oneUiVer" class="font-bold text-violet-300">One UI 9</span>
+                    <!-- Build Details Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-sm">
+                        <div class="bg-black/35 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 flex justify-between items-center">
+                            <span class="text-gray-400">One UI Version</span>
+                            <span id="oneUiVer" class="font-bold text-violet-300">One UI 9 (Android 17)</span>
                         </div>
-
-                        <div class="bg-black/30 p-3 rounded-xl border border-white/5 flex justify-between items-center">
-                            <span class="text-gray-400">Uploaded:</span>
-                            <span id="uploadDate" class="font-medium text-gray-200">2026-11-19 18:24 UTC</span>
+                        <div class="bg-black/35 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 flex justify-between items-center">
+                            <span class="text-gray-400">Uploaded</span>
+                            <span id="uploadDate" class="font-semibold text-gray-200">2026-11-19 18:24 UTC</span>
                         </div>
-
-                        <div class="md:col-span-2 bg-black/30 p-3 rounded-xl border border-white/5 flex justify-between items-center gap-2">
-                            <span class="text-gray-400 shrink-0">File:</span>
-                            <span id="fileName" class="font-mono text-xs text-gray-200 truncate">a52sxq_K4_UN1CA_OneUI9.3.139.zip</span>
+                        <div class="sm:col-span-2 bg-black/35 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 flex justify-between items-center gap-2">
+                            <span class="text-gray-400 shrink-0">Package File</span>
+                            <span id="fileName" class="font-mono text-xs text-gray-100 truncate">a52sxq_K4_UN1CA_OneUI9.3.139.zip</span>
                         </div>
-
-                        <div class="md:col-span-2 bg-black/30 p-3 rounded-xl border border-white/5 flex items-center justify-between gap-3">
-                            <span class="text-gray-400 shrink-0">SHA-256:</span>
-                            <span id="shaText" class="font-mono text-xs text-violet-300 truncate tracking-tight">badcd0b145b69c90cc753265a7f80ada8ebfbed083319ac1fc9e56bfefffc993</span>
-                            <button onclick="copySHA()" class="shrink-0 hover:bg-violet-500/10 p-1.5 rounded-lg transition" title="Copy SHA-256">
-                                <i id="copyIcon" data-lucide="copy" class="w-4 h-4 text-violet-400"></i>
+                        <div class="sm:col-span-2 bg-black/35 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 flex items-center justify-between gap-3">
+                            <span class="text-gray-400 shrink-0">SHA-256</span>
+                            <span id="shaText" class="font-mono text-xs text-cyan-300 truncate">badcd0b145b69c90cc753265a7f80ada8ebfbed083319ac1fc9e56bfefffc993</span>
+                            <button onclick="copySHA()" class="shrink-0 bg-white/10 hover:bg-white/20 p-2 rounded-xl transition" title="Copy SHA-256">
+                                <i id="copyIcon" data-lucide="copy" class="w-4 h-4 text-white"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Direct Download Button -->
-                    <a id="downloadBtn" href="https://pub-6767d80b221d428f97378974ab2f32f0.r2.dev/a52sxq_K4_UN1CA_OneUI9.3.139.zip" download class="flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 font-extrabold py-4 px-6 rounded-2xl shadow-[0_4px_20px_rgba(124,58,237,0.3)] transition-all duration-300 transform active:scale-95 group">
-                        <i data-lucide="download" class="w-5 h-5 group-hover:translate-y-0.5 transition-transform"></i> Download ROM
+                    <!-- Mandatory Firmware Notice -->
+                    <div class="bg-amber-500/10 border border-amber-400/25 rounded-2xl p-3.5 mb-6 flex items-start gap-3 text-xs text-amber-200">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                        <span><strong>Base Firmware Required:</strong> Builds require <strong>A528BXXU5FWK4 (BIT 5)</strong> firmware as base, an unlocked bootloader, and TWRP recovery.</span>
+                    </div>
+
+                    <!-- Glossy Download CTA -->
+                    <a id="downloadBtn" href="https://pub-6767d80b221d428f97378974ab2f32f0.r2.dev/a52sxq_K4_UN1CA_OneUI9.3.139.zip" download class="w-full liquid-btn-primary font-extrabold text-base py-4 px-6 rounded-2xl text-white flex items-center justify-center gap-2.5 transition transform active:scale-95 group">
+                        <i data-lucide="download" class="w-5 h-5 group-hover:translate-y-0.5 transition-transform"></i>
+                        <span>Download ROM Directly (Cloudflare R2)</span>
                     </a>
                 </div>
 
-                <!-- Rich 4-Tab Documentation Section -->
-                <div class="glow-card bg-[#110e24]/70 backdrop-blur-lg border border-white/5 rounded-3xl p-5 md:p-6">
-                    <div class="flex border-b border-white/10 mb-4 text-xs md:text-sm font-semibold overflow-x-auto">
-                        <button onclick="switchTab('features')" id="tab-features" class="flex-1 pb-3 px-2 text-violet-400 border-b-2 border-violet-500 transition-all whitespace-nowrap">Features</button>
-                        <button onclick="switchTab('changelog')" id="tab-changelog" class="flex-1 pb-3 px-2 text-gray-400 border-b-2 border-transparent transition-all whitespace-nowrap">Changelog</button>
-                        <button onclick="switchTab('flash')" id="tab-flash" class="flex-1 pb-3 px-2 text-gray-400 border-b-2 border-transparent transition-all whitespace-nowrap">How to Flash</button>
-                        <button onclick="switchTab('info')" id="tab-info" class="flex-1 pb-3 px-2 text-gray-400 border-b-2 border-transparent transition-all whitespace-nowrap">Info & Credits</button>
+                <!-- RIGHT 5 COLS: CHANGELOG & FLASH GUIDE -->
+                <div id="install" class="lg:col-span-5 space-y-6">
+                    
+                    <!-- Changelog Glass Card -->
+                    <div class="liquid-glass-card rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base font-extrabold text-white flex items-center gap-2">
+                                <i data-lucide="git-commit" class="w-4 h-4 text-violet-400"></i>
+                                <span>Recent Changelog</span>
+                            </h3>
+                            <span class="text-[11px] font-bold text-violet-300 bg-violet-500/15 px-2.5 py-0.5 rounded-full">9.3.132 → 9.3.139</span>
+                        </div>
+                        <ul id="changelogList" class="text-xs md:text-sm space-y-2.5 text-gray-300">
+                            <li class="flex gap-2.5">
+                                <span class="text-cyan-400 font-bold">•</span>
+                                <span><strong>NEW:</strong> Added <strong>Infinix GT 30 Pro</strong> spoof profile for 120 FPS & max graphics in PUBG, BGMI, CODM & MLBB.</span>
+                            </li>
+                            <li class="flex gap-2.5">
+                                <span class="text-cyan-400 font-bold">•</span>
+                                <span><strong>NEW:</strong> Built-in OTA Software Updater with seamless TWRP auto-install.</span>
+                            </li>
+                            <li class="flex gap-2.5">
+                                <span class="text-cyan-400 font-bold">•</span>
+                                <span><strong>FIXED:</strong> Smoother Quick Settings animations, touch boost, Secure Folder & Private Album fixes.</span>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="space-y-4 max-h-72 overflow-y-auto pr-1 custom-scroll">
-                        
-                        <!-- 1. FEATURES TAB (From kusti420 GitHub README) -->
-                        <div id="content-features" class="space-y-3">
-                            <h3 class="text-xs font-black uppercase text-violet-400 tracking-wider">Core & UN1CA Exclusive Features</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300">
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">✨ <strong>Full Galaxy AI:</strong> Audio/Object Eraser, Photo Assist, Now Brief, Interpreter & Writing Assist</div>
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">🎮 <strong>Games FPS Unlock:</strong> High graphics & 120 FPS spoof (incl. Infinix GT 30 Pro profile)</div>
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">☁️ <strong>Unlimited Google Photos:</strong> Built-in unlimited backup spoofing</div>
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">🛡️ <strong>Security & Integrity:</strong> Play Integrity Fix, KnoxPatch, TrickyStore & Hide My Applist support</div>
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">🔄 <strong>Built-in OTA Updater:</strong> Seamless system updates with TWRP auto-install</div>
-                                <div class="bg-black/25 p-2.5 rounded-xl border border-white/5">⚡ <strong>Smooth UX:</strong> EROFS powered, Native Live Blur, Vulkan renderer & 120Hz Adaptive refresh</div>
-                            </div>
-                        </div>
-
-                        <!-- 2. CHANGELOG TAB -->
-                        <div id="content-changelog" class="space-y-3 hidden">
-                            <h3 class="text-xs font-black uppercase text-violet-400 tracking-wider">Recent Highlights (9.3.132 → 9.3.139)</h3>
-                            <ul id="changelogList" class="text-sm space-y-2 text-gray-300">
-                                <li class="flex gap-2">
-                                    <span class="text-violet-400 font-bold">•</span>
-                                    <span><strong>NEW:</strong> Added <strong>Infinix GT 30 Pro</strong> spoof profile for high graphics & 120 FPS in PUBG Mobile, BGMI, CODM & MLBB.</span>
-                                </li>
-                                <li class="flex gap-2">
-                                    <span class="text-violet-400 font-bold">•</span>
-                                    <span><strong>NEW:</strong> Built-in OTA Software Updater with seamless TWRP auto-install.</span>
-                                </li>
-                                <li class="flex gap-2">
-                                    <span class="text-violet-400 font-bold">•</span>
-                                    <span><strong>FIXED:</strong> Smoother Quick Settings animations, touch boost, Secure Folder & Private Album fixes.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- 3. HOW TO FLASH TAB -->
-                        <div id="content-flash" class="space-y-3 hidden">
-                            <h3 class="text-xs font-black uppercase text-violet-400 tracking-wider">Installation Instructions</h3>
-                            <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-xs text-amber-200">
-                                ⚠️ <strong>Requirement:</strong> Ensure your device is on <strong>A528BXXU5FWK4 (BIT 5)</strong> base firmware with an unlocked bootloader and TWRP installed.
-                            </div>
-                            <ol class="text-sm space-y-2 text-gray-300 list-decimal pl-4">
-                                <li>Download the ROM zip & verify the SHA-256 checksum (a mismatch means a broken download).</li>
-                                <li>Boot into <strong>TWRP</strong> custom recovery.</li>
-                                <li>Wipe Data, Cache, and Dalvik (or <strong>Format Data</strong> if coming from another ROM).</li>
-                                <li>Flash the downloaded ROM zip file.</li>
-                                <li>Reboot to System & enjoy One UI 9!</li>
-                            </ol>
-                        </div>
-
-                        <!-- 4. INFO & CREDITS TAB -->
-                        <div id="content-info" class="space-y-3 hidden text-xs md:text-sm text-gray-300 leading-relaxed">
-                            <h3 class="text-xs font-black uppercase text-violet-400 tracking-wider">About & Credits</h3>
-                            <p>
-                                <strong>K4_UN1CA</strong> is an unofficial community-maintained fork continuing the One UI 9 (Android 17) port for the Samsung Galaxy A52s 5G (<code>a52sxq</code>, Android 14 vendor & 5.4 kernel).
-                            </p>
-                            <p class="text-gray-400 text-xs">
-                                <strong>Credits:</strong> All credit for the build system and patches goes to <strong>salvogiangri (UN1CA)</strong>, <strong>devcore94 (MonsterROM)</strong>, and <strong>ShaDisNX255 (NcX ROM)</strong>. Licensed under GPL-3.0.
-                            </p>
-                        </div>
-
+                    <!-- TWRP Installation Glass Card -->
+                    <div class="liquid-glass-card rounded-3xl p-6">
+                        <h3 class="text-base font-extrabold text-white flex items-center gap-2 mb-4">
+                            <i data-lucide="terminal" class="w-4 h-4 text-cyan-400"></i>
+                            <span>How to Flash (TWRP)</span>
+                        </h3>
+                        <ol class="text-xs md:text-sm space-y-2.5 text-gray-300 list-decimal pl-4">
+                            <li>Download the ROM zip & verify the <strong>SHA-256</strong> checksum.</li>
+                            <li>Boot into <strong>TWRP</strong> custom recovery on your Galaxy A52s 5G.</li>
+                            <li>Wipe <em>Data, Cache, and Dalvik</em> (or <strong>Format Data</strong> if switching from another ROM).</li>
+                            <li>Flash the downloaded ROM zip file.</li>
+                            <li>Reboot to System & enjoy One UI 9!</li>
+                        </ol>
                     </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================================================
+         SECTION 6: MULTI-COLUMN LIQUID GLASS PRO FOOTER
+         ========================================================= -->
+    <footer class="relative z-10 max-w-6xl mx-auto px-4 md:px-8 pt-8 pb-10">
+        <div class="liquid-glass rounded-3xl p-6 md:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs md:text-sm">
+                <!-- Col 1: About -->
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-violet-400"></span>
+                        <span class="font-extrabold text-base text-white tracking-wide">K4_UN1CA</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Unofficial community-maintained UN1CA fork continuing One UI 9 (Android 17) development for Samsung Galaxy A52s 5G (<code>a52sxq</code>). Not affiliated with UN1CA or Samsung.
+                    </p>
                 </div>
 
+                <!-- Col 2: Links -->
+                <div>
+                    <h4 class="font-extrabold text-white uppercase tracking-wider text-xs mb-3">Project & Community</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="https://t.me/IchthysOS" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition flex items-center gap-2"><i data-lucide="send" class="w-3.5 h-3.5 text-violet-400"></i> Telegram Discussion Group</a></li>
+                        <li><a href="https://github.com/kusti420/k4_un1ca" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition flex items-center gap-2"><i data-lucide="github" class="w-3.5 h-3.5 text-gray-300"></i> GitHub Source (kusti420)</a></li>
+                        <li><a href="https://ko-fi.com/kusti420/goal?g=0#checkoutModal" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition flex items-center gap-2"><i data-lucide="coffee" class="w-3.5 h-3.5 text-amber-400"></i> Support Maintainer on Ko-fi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Credits -->
+                <div>
+                    <h4 class="font-extrabold text-white uppercase tracking-wider text-xs mb-3">Credits & License</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Built by <strong>kusti420</strong>. Full credit for the build system and patches goes to <strong>salvogiangri (UN1CA)</strong>, <strong>devcore94 (MonsterROM)</strong>, and <strong>ShaDisNX255 (NcX ROM)</strong>. Licensed under GPL-3.0.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-6 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-400 text-center">
+                <span>Hosted directly on Cloudflare R2 • Zero external servers.</span>
+                <span>Check SHA-256 before flashing; a mismatch means a corrupted download.</span>
             </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <p class="text-[11px] text-gray-400 text-center leading-relaxed mt-8">
-        Flash the zip in TWRP. Check the SHA-256 after downloading; a mismatch means a broken download.<br>
-        Hosted directly on Cloudflare R2 • Zero external servers.
-    </p>
+    </footer>
 
     <!-- =====================================================================
-         EASY UPDATE CONFIGURATION (Developer only edits this block for updates)
+         EASY UPDATE CONFIGURATION (Edit only this block for new builds)
          ===================================================================== -->
     <script>
         const R2_BASE_URL = "https://pub-6767d80b221d428f97378974ab2f32f0.r2.dev";
 
         const ROM_CONFIG = {
             buildVersion: "9.3.139",
-            oneUiVersion: "One UI 9",
+            oneUiVersion: "One UI 9 (Android 17)",
             fileName: "a52sxq_K4_UN1CA_OneUI9.3.139.zip",
             fileSize: "6.54 GB",
             uploadDate: "2026-11-19 18:24 UTC",
             sha256: "badcd0b145b69c90cc753265a7f80ada8ebfbed083319ac1fc9e56bfefffc993"
         };
 
-        // Apply ROM_CONFIG automatically to the page
+        // Sync config to UI
         document.getElementById("buildTitle").innerText = `Latest Build ${ROM_CONFIG.buildVersion}`;
+        document.getElementById("heroBtnText").innerText = `Download Build ${ROM_CONFIG.buildVersion}`;
         document.getElementById("oneUiVer").innerText = ROM_CONFIG.oneUiVersion;
         document.getElementById("fileName").innerText = ROM_CONFIG.fileName;
         document.getElementById("fileSize").innerText = ROM_CONFIG.fileSize;
@@ -319,41 +572,22 @@
         // Init Lucide Icons
         lucide.createIcons();
 
-        // Copy SHA-256
+        // One-Click Copy SHA-256
         function copySHA() {
             const shaText = document.getElementById("shaText").innerText;
             navigator.clipboard.writeText(shaText);
             
             const copyIcon = document.getElementById("copyIcon");
             copyIcon.setAttribute('data-lucide', 'check');
-            copyIcon.classList.add('text-green-400');
+            copyIcon.classList.add('text-emerald-400');
             lucide.createIcons();
             
             setTimeout(() => {
                 copyIcon.setAttribute('data-lucide', 'copy');
-                copyIcon.classList.remove('text-green-400');
+                copyIcon.classList.remove('text-emerald-400');
                 lucide.createIcons();
             }, 2000);
-        }
-
-        // Tabs Switching
-        function switchTab(tabId) {
-            ['features', 'changelog', 'flash', 'info'].forEach(t => {
-                const btn = document.getElementById(`tab-${t}`);
-                const content = document.getElementById(`content-${t}`);
-                
-                if(t === tabId) {
-                    btn.classList.add('text-violet-400', 'border-violet-500');
-                    btn.classList.remove('text-gray-400', 'border-transparent');
-                    content.classList.remove('hidden');
-                } else {
-                    btn.classList.add('text-gray-400', 'border-transparent');
-                    btn.classList.remove('text-violet-400', 'border-violet-500');
-                    content.classList.add('hidden');
-                }
-            });
         }
     </script>
 </body>
 </html>
-
