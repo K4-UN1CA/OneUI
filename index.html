@@ -1693,7 +1693,89 @@
       }
     }
 
-    loadOtaData();
+        async function fetchOtaJson() {
+      const target = OTA_JSON + "?t=" + Date.now();
+      // 1. Pehle direct try karega
+      try {
+        const res = await fetch(target);
+        if (res.ok) return await res.json();
+      } catch (e) {}
+
+      // 2. Agar R2 CORS block kare, toh proxy se layega
+      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(target);
+      const proxyRes = await fetch(proxyUrl);
+      if (!proxyRes.ok) throw new Error("Proxy fetch failed");
+      return await proxyRes.json();
+    }
+
+    async function loadOtaData() {
+      try {
+        const data = await fetchOtaJson();
+
+        if (data.version) {
+          document.getElementById("r2-version").textContent = data.version;
+          document.getElementById("hero-dl-text").textContent = "Download " + data.version;
+          document.getElementById("r2-dl-label").textContent = "Download " + data.version;
+          document.getElementById("mockup-ver").textContent = "K4_UN1CA " + data.version;
+        }
+        if (data.file) {
+          const fullUrl = R2_BASE + data.file;
+          document.getElementById("r2-file").textContent = data.file;
+          document.getElementById("nav-dl-btn").href = fullUrl;
+          document.getElementById("hero-dl-btn").href = fullUrl;
+          document.getElementById("r2-dl-btn").href = fullUrl;
+        }
+        if (data.size) {
+          const gb = (data.size / (1024 ** 3)).toFixed(2) + " GB";
+          document.getElementById("r2-size").textContent = gb;
+        }
+        if (data.uploaded) {
+          document.getElementById("r2-uploaded").textContent = data.uploaded.replace("T", " ").replace("Z", " UTC");
+        }
+        if (data.sha256) {
+          document.getElementById("r2-sha").textContent = data.sha256;
+        }
+
+        // Naye build ki tile automatically top par lagayega
+        if (data.changelog && data.version && data.version !== "9.3.140") {
+          const parsed = parseOtaChangelog(data.changelog);
+          const stack = document.querySelector(".accordion-stack");
+
+          const oldTop = stack.firstElementChild;
+          if (oldTop) {
+            oldTop.classList.remove("open");
+            oldTop.querySelector(".acc-panel").style.maxHeight = null;
+            const oldPill = oldTop.querySelector(".acc-pill");
+            if (oldPill) {
+              oldPill.classList.remove("live");
+              oldPill.textContent = "Weather Animation";
+            }
+          }
+
+          const newTile = document.createElement("div");
+          newTile.className = "acc-tile open";
+          const titleText = parsed.range || `Latest → ${data.version}`;
+          newTile.innerHTML = `
+            <button class="acc-trigger" type="button" onclick="toggleAcc(this)">
+              <div class="acc-left">
+                <span class="acc-ver">${titleText}</span>
+                <span class="acc-pill live">Current OTA</span>
+              </div>
+              <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="acc-panel" style="max-height: 700px;">
+              <div class="acc-content">
+                <ul class="cl-lines">${parsed.itemsHtml}</ul>
+              </div>
+            </div>
+          `;
+          stack.prepend(newTile);
+        }
+      } catch (err) {
+        console.error("OTA sync error:", err);
+      }
+    }
+
   </script>
 </body>
 </html>
