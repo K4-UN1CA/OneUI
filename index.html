@@ -11,19 +11,11 @@
     :root {
       --bg: #070913;
       --surface: rgba(17, 22, 39, 0.72);
-      --surface-solid: #0f1424;
       --surface-hover: rgba(26, 34, 58, 0.85);
       --border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(99, 102, 241, 0.35);
       --text: #f8fafc;
       --muted: #94a3b8;
-      --blue: #3b82f6;
-      --indigo: #6366f1;
-      --purple: #a855f7;
-      --cyan: #38bdf8;
-      --green: #10b981;
-      --amber: #f59e0b;
-      --rose: #f43f5e;
       --radius-xl: 26px;
       --radius-lg: 20px;
       --radius-md: 14px;
@@ -118,23 +110,28 @@
       color: var(--text);
     }
 
-    .nav-dl {
+    /* Right Status Pill instead of Download button */
+    .nav-status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.82rem;
+      gap: 7px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #6ee7b7;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .nav-dl:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+    .status-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+      animation: blink 2s infinite;
     }
 
     /* Hero Section */
@@ -158,7 +155,6 @@
       margin-bottom: 20px;
     }
 
-    /* OneUI with huge 9 below it */
     .hero-title-wrap {
       display: flex;
       flex-direction: column;
@@ -292,20 +288,20 @@
     /* Section Headers */
     .sec-head {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 34px;
     }
 
     .sec-kicker {
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #818cf8;
+      color: #67e8f9;
       margin-bottom: 6px;
     }
 
     .sec-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-size: clamp(1.65rem, 3.5vw, 2.2rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 6px;
@@ -316,263 +312,336 @@
       color: var(--muted);
     }
 
-    /* 3 Phone Preview Showcase */
-    .phones-grid {
+    /* =====================================================
+       3-PHONE VECTOR INTERFACE SHOWCASE (Exact Match)
+       ===================================================== */
+    .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-bottom: 68px;
+      grid-template-columns: 1fr 1.08fr 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 72px;
     }
 
-    .phone-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 26px 20px 22px;
+    .sc-card {
+      background: linear-gradient(180deg, rgba(20, 25, 44, 0.78) 0%, rgba(11, 14, 26, 0.92) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 26px;
+      padding: 28px 18px 22px;
       text-align: center;
-      transition: transform 0.25s, border-color 0.25s;
+      position: relative;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .phone-card:hover {
+    .sc-card:hover {
       transform: translateY(-4px);
-      border-color: var(--border-accent);
+      border-color: rgba(129, 140, 248, 0.35);
     }
 
-    .mockup-shell {
-      width: 215px;
-      height: 360px;
+    .sc-card.center-featured {
+      padding-top: 22px;
+      padding-bottom: 26px;
+      border-color: rgba(99, 102, 241, 0.28);
+      background: linear-gradient(180deg, rgba(24, 30, 54, 0.88) 0%, rgba(12, 16, 30, 0.96) 100%);
+    }
+
+    .live-blur-pill {
+      display: inline-block;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+
+    /* Gradient-bordered Vector Phone Frame */
+    .v-phone {
+      width: 196px;
+      height: 344px;
       margin: 0 auto 20px;
-      background: linear-gradient(170deg, #171c30 0%, #0b0e1a 100%);
-      border: 2px solid rgba(255, 255, 255, 0.14);
       border-radius: 34px;
-      padding: 12px;
+      padding: 3px;
+      background: linear-gradient(160deg, #818cf8 0%, #c084fc 45%, #38bdf8 100%);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.6),
+        0 0 28px rgba(99, 102, 241, 0.18);
+    }
+
+    .v-phone-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 31px;
+      padding: 14px 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.55);
       position: relative;
       overflow: hidden;
     }
 
-    .mockup-notch {
-      width: 9px;
-      height: 9px;
-      background: #04050a;
-      border-radius: 50%;
-      margin: 0 auto 8px;
+    /* Phone 1 Interior: Lockscreen & Now Brief */
+    .v-lock-bg {
+      background: linear-gradient(180deg, #272252 0%, #1a1b3b 52%, #13162b 100%);
     }
 
-    /* Phone 1: Lockscreen & Now Brief (No 120Hz) */
-    .lock-screen {
-      background: linear-gradient(180deg, rgba(79, 70, 229, 0.28) 0%, rgba(15, 23, 42, 0.9) 100%);
-      border-radius: 24px;
-      height: 100%;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .lock-clock {
-      font-size: 2.3rem;
+    .v-clock {
+      font-size: 2.35rem;
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-top: 14px;
+      color: #f8fafc;
+      margin-top: 16px;
     }
 
-    .lock-date {
-      font-size: 0.72rem;
+    .v-date {
+      font-size: 0.66rem;
+      font-weight: 600;
       color: #cbd5e1;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
-    .now-brief-pill {
+    .v-notif-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .v-notif-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      flex-shrink: 0;
+    }
+
+    .v-notif-lines {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .v-line-1 {
+      height: 5px;
+      width: 85%;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .v-line-2 {
+      height: 5px;
+      width: 60%;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .v-now-brief {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 0.74rem;
+      padding: 6px 16px;
+      font-size: 0.68rem;
       font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 6px;
-    }
-
-    .now-brief-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #a855f7;
-    }
-
-    /* Phone 2: Control Center (Wi-Fi icon & Bluetooth icon) */
-    .cc-screen {
-      background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(13, 17, 32, 0.95) 100%);
-      border-radius: 24px;
-      height: 100%;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .cc-pill-top {
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #93c5fd;
+      color: #f1f5f9;
       align-self: center;
+      margin-bottom: 4px;
     }
 
-    .cc-toggles {
+    /* Phone 2 Interior: Control Center (Wi-Fi icon + Bluetooth icon) */
+    .v-cc-bg {
+      background: linear-gradient(180deg, #1b2242 0%, #12172e 55%, #0e1326 100%);
+    }
+
+    .v-pill-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
+      margin-top: 6px;
+    }
+
+    .v-qs-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 9px 6px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .v-qs-pill:active {
+      transform: scale(0.95);
+    }
+
+    .v-qs-pill.wifi-pill {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .v-qs-pill.bt-pill {
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+
+    .v-qs-pill.off {
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      box-shadow: none;
+    }
+
+    .v-circle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 4px 10px;
+    }
+
+    .v-circle {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .v-circle.active-blue { background: #3b82f6; }
+    .v-circle.active-pink { background: #ec4899; }
+
+    .v-slider-bar {
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px;
+      display: flex;
+      align-items: center;
+    }
+
+    .v-slider-fill {
+      width: 74%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6366f1, #38bdf8);
+    }
+
+    .v-vulkan-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 8px 6px;
+    }
+
+    .v-vulkan-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .v-vulkan-sub {
+      font-size: 0.56rem;
+      color: #7dd3fc;
+      margin-top: 2px;
+    }
+
+    /* Phone 3 Interior: Software Update & Tweaks */
+    .v-ota-bg {
+      background: linear-gradient(180deg, #161b33 0%, #101426 100%);
+    }
+
+    .v-ota-header {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #f8fafc;
       margin-top: 8px;
     }
 
-    .cc-btn {
+    .v-ota-ring {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 10px 8px;
-      border-radius: 14px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      user-select: none;
-      background: rgba(255, 255, 255, 0.08);
-      color: #94a3b8;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.2s;
-    }
-
-    .cc-btn.on-blue {
-      background: #4f46e5;
-      color: #fff;
-      border-color: #818cf8;
-    }
-
-    .cc-btn.on-cyan {
-      background: #0284c7;
-      color: #fff;
-      border-color: #38bdf8;
-    }
-
-    .cc-circles {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      padding: 8px 4px;
-    }
-
-    .cc-dot {
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.09);
-    }
-
-    .cc-dot.c1 { background: #3b82f6; }
-    .cc-dot.c2 { background: #8b5cf6; }
-    .cc-dot.c3 { background: #10b981; }
-    .cc-dot.c4 { background: #f59e0b; }
-
-    .cc-footer-box {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      padding: 8px;
-      font-size: 0.66rem;
-      color: #cbd5e1;
-      font-weight: 600;
-    }
-
-    /* Phone 3: OTA & Tweaks */
-    .ota-screen {
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.16) 0%, rgba(13, 17, 32, 0.95) 100%);
-      border-radius: 24px;
-      height: 100%;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .ota-card-mini {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 12px 8px;
-    }
-
-    .ota-check {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 6px;
-      font-weight: 800;
+      margin: 8px auto 6px;
       font-size: 0.85rem;
+      font-weight: 800;
     }
 
-    .tweak-rows {
+    .v-ota-ver {
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #f1f5f9;
+    }
+
+    .v-ota-sub {
+      font-size: 0.55rem;
+      color: #94a3b8;
+    }
+
+    .v-tweak-list {
       display: flex;
       flex-direction: column;
       gap: 7px;
+      margin-bottom: 4px;
     }
 
-    .tweak-row {
+    .v-tweak-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 7px 10px;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 10px;
-      font-size: 0.66rem;
-      font-weight: 600;
+      padding: 7px 8px;
+      font-size: 0.57rem;
+      font-weight: 700;
       color: #e2e8f0;
     }
 
-    .switch-pill {
-      width: 24px;
-      height: 13px;
-      border-radius: 999px;
-      background: #4f46e5;
-      position: relative;
-    }
-
-    .switch-pill::after {
-      content: "";
-      position: absolute;
-      right: 2px;
-      top: 2px;
-      width: 9px;
+    .v-pill-ind {
+      width: 18px;
       height: 9px;
-      border-radius: 50%;
-      background: #fff;
+      border-radius: 99px;
     }
 
-    .phone-card-title {
-      font-size: 1.02rem;
-      font-weight: 700;
+    .v-pill-ind.p-purple { background: #8b5cf6; }
+    .v-pill-ind.p-cyan { background: #06b6d4; }
+    .v-pill-ind.p-indigo { background: #6366f1; }
+
+    .sc-title {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: #f8fafc;
       margin-bottom: 5px;
     }
 
-    .phone-card-desc {
-      font-size: 0.82rem;
+    .sc-desc {
+      font-size: 0.8rem;
       color: var(--muted);
+      line-height: 1.45;
+      max-width: 240px;
+      margin: 0 auto;
     }
 
     /* Flagship Features Bento Grid */
@@ -621,7 +690,7 @@
       color: var(--muted);
     }
 
-    /* Clean Official R2 Mirror Card */
+    /* Official R2 Mirror Card (Single Download Button on Page) */
     .mirror-card {
       background: linear-gradient(160deg, rgba(20, 26, 48, 0.92), rgba(12, 16, 30, 0.95));
       border: 1px solid var(--border-accent);
@@ -1060,7 +1129,7 @@
     }
 
     @media (max-width: 860px) {
-      .phones-grid { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
       .spec-grid { grid-template-columns: repeat(2, 1fr); }
       .comm-tiles { grid-template-columns: 1fr; }
@@ -1071,7 +1140,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- Top Navbar -->
+    <!-- Top Navbar (No Download Button here — replaced with live device badge) -->
     <nav class="navbar">
       <div class="nav-brand">
         <span class="nav-dot"></span>
@@ -1081,12 +1150,13 @@
       <div class="nav-links">
         <a href="#preview">UI Preview</a>
         <a href="#features">Features</a>
-        <a href="#download">Download</a>
+        <a href="#download">Mirror</a>
         <a href="#changelogs">Changelogs</a>
       </div>
-      <a class="nav-dl" id="nav-dl-btn" href="https://pub-6767d80b221d428f97378974ab2f32f0.r2.dev/a52sxq_K4_UN1CA_OneUI9.3.147.zip">
-        Download
-      </a>
+      <div class="nav-status-pill">
+        <span class="status-pulse"></span>
+        <span>a52sxq • OTA</span>
+      </div>
     </nav>
 
     <!-- Hero -->
@@ -1104,9 +1174,9 @@
       </p>
 
       <div class="hero-actions">
-        <a class="btn-grad" id="hero-dl-btn" href="https://pub-6767d80b221d428f97378974ab2f32f0.r2.dev/a52sxq_K4_UN1CA_OneUI9.3.147.zip">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="hero-dl-text">Download 9.3.147</span>
+        <a class="btn-grad" href="#download">
+          <span>Get Build <span id="hero-ver-tag">9.3.147</span></span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
         <a class="btn-glass" href="#features">Explore Features</a>
       </div>
@@ -1132,7 +1202,7 @@
       </div>
     </header>
 
-    <!-- Visual Experience: 3 Phone Previews -->
+    <!-- Visual Experience: Exact 3-Phone Vector Showcase -->
     <section id="preview">
       <div class="sec-head">
         <div class="sec-kicker">Visual Experience</div>
@@ -1140,103 +1210,107 @@
         <p class="sec-sub">Pure vector UI showcase — zero external assets, crisp at any resolution.</p>
       </div>
 
-      <div class="phones-grid">
-        <!-- Phone 1: Lockscreen & Now Brief (120Hz removed) -->
-        <div class="phone-card">
-          <div class="mockup-shell">
-            <div class="lock-screen">
+      <div class="showcase-grid">
+        <!-- Phone 1: Lockscreen & Now Brief (No 120Hz) -->
+        <div class="sc-card">
+          <div class="v-phone">
+            <div class="v-phone-inner v-lock-bg">
               <div>
-                <div class="mockup-notch"></div>
-                <div class="lock-clock">09:36</div>
-                <div class="lock-date">Sat, 21 Nov • Galaxy AI</div>
+                <div class="v-clock">09:36</div>
+                <div class="v-date">Sat, 21 Nov • Galaxy AI</div>
               </div>
-              <div>
-                <div class="now-brief-pill">
-                  <span class="now-brief-dot"></span>
-                  <span>Now Brief</span>
+
+              <div class="v-notif-card">
+                <div class="v-notif-dot"></div>
+                <div class="v-notif-lines">
+                  <div class="v-line-1"></div>
+                  <div class="v-line-2"></div>
                 </div>
               </div>
+
+              <div class="v-now-brief">Now Brief</div>
             </div>
           </div>
-          <div class="phone-card-title">Lockscreen &amp; Now Brief</div>
-          <div class="phone-card-desc">Dynamic lockscreen widgets, AOD clock transitions &amp; Galaxy AI Now Brief.</div>
+          <div class="sc-title">Lockscreen &amp; Now Brief</div>
+          <div class="sc-desc">Dynamic lockscreen widgets, AOD clock transitions &amp; Galaxy AI Now Brief.</div>
         </div>
 
         <!-- Phone 2: Control Center (Wi-Fi icon & Bluetooth icon) -->
-        <div class="phone-card">
-          <div class="mockup-shell">
-            <div class="cc-screen">
-              <div>
-                <div class="mockup-notch"></div>
-                <div class="cc-pill-top">NATIVE LIVE BLUR</div>
-                <div class="cc-toggles">
-                  <div class="cc-btn on-blue" onclick="this.classList.toggle('on-blue')" title="Tap to toggle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
-                      <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
-                      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
-                      <line x1="12" y1="20" x2="12.01" y2="20"/>
-                    </svg>
-                    <span>Wi-Fi</span>
-                  </div>
-                  <div class="cc-btn on-cyan" onclick="this.classList.toggle('on-cyan')" title="Tap to toggle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/>
-                    </svg>
-                    <span>Bluetooth</span>
-                  </div>
+        <div class="sc-card center-featured">
+          <div class="live-blur-pill">NATIVE LIVE BLUR</div>
+          <div class="v-phone">
+            <div class="v-phone-inner v-cc-bg">
+              <div class="v-pill-row">
+                <div class="v-qs-pill wifi-pill" onclick="this.classList.toggle('off')" title="Tap to toggle">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                  </svg>
+                  <span>Wi-Fi</span>
+                </div>
+
+                <div class="v-qs-pill bt-pill" onclick="this.classList.toggle('off')" title="Tap to toggle">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/>
+                  </svg>
+                  <span>Bluetooth</span>
                 </div>
               </div>
 
-              <div class="cc-circles">
-                <div class="cc-dot c1"></div>
-                <div class="cc-dot c2"></div>
-                <div class="cc-dot"></div>
-                <div class="cc-dot c3"></div>
-                <div class="cc-dot"></div>
-                <div class="cc-dot c4"></div>
-                <div class="cc-dot c1"></div>
-                <div class="cc-dot"></div>
+              <div class="v-circle-grid">
+                <div class="v-circle"></div>
+                <div class="v-circle"></div>
+                <div class="v-circle active-blue"></div>
+                <div class="v-circle"></div>
+                <div class="v-circle active-pink"></div>
+                <div class="v-circle"></div>
               </div>
 
-              <div class="cc-footer-box">Vulkan Renderer Active • Touch Boost</div>
+              <div class="v-slider-bar">
+                <div class="v-slider-fill"></div>
+              </div>
+
+              <div class="v-vulkan-box">
+                <div class="v-vulkan-title">Vulkan Renderer Active</div>
+                <div class="v-vulkan-sub">120 FPS Spoof • Extra Brightness</div>
+              </div>
             </div>
           </div>
-          <div class="phone-card-title">One UI 9 Control Center</div>
-          <div class="phone-card-desc">Real-time gaussian blur toggle, Vulkan UI rendering &amp; silky-smooth animations.</div>
+          <div class="sc-title">One UI 9 Control Center</div>
+          <div class="sc-desc">Real-time gaussian blur toggle, Vulkan UI rendering &amp; silky-smooth animations.</div>
         </div>
 
         <!-- Phone 3: OTA & UN1CA Tweaks -->
-        <div class="phone-card">
-          <div class="mockup-shell">
-            <div class="ota-screen">
+        <div class="sc-card">
+          <div class="v-phone">
+            <div class="v-phone-inner v-ota-bg">
               <div>
-                <div class="mockup-notch"></div>
-                <div class="ota-card-mini">
-                  <div class="ota-check">✓</div>
-                  <div style="font-size:0.74rem;font-weight:700;">Software Update</div>
-                  <div style="font-size:0.65rem;color:#94a3b8;" id="mockup-ver">K4_UN1CA 9.3.147</div>
-                </div>
+                <div class="v-ota-header">Software Update</div>
+                <div class="v-ota-ring">✓</div>
+                <div class="v-ota-ver" id="mockup-ver">K4_UN1CA 9.3.147</div>
+                <div class="v-ota-sub">OTA Updater • TWRP Ready</div>
               </div>
 
-              <div class="tweak-rows">
-                <div class="tweak-row">
+              <div class="v-tweak-list">
+                <div class="v-tweak-item">
                   <span>Infinix GT 30 Pro Spoof</span>
-                  <span class="switch-pill"></span>
+                  <span class="v-pill-ind p-purple"></span>
                 </div>
-                <div class="tweak-row">
+                <div class="v-tweak-item">
                   <span>Unlimited G-Photos</span>
-                  <span class="switch-pill"></span>
+                  <span class="v-pill-ind p-cyan"></span>
                 </div>
-                <div class="tweak-row">
+                <div class="v-tweak-item">
                   <span>Play Integrity + Knox</span>
-                  <span class="switch-pill"></span>
+                  <span class="v-pill-ind p-indigo"></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="phone-card-title">OTA &amp; UN1CA Tweaks</div>
-          <div class="phone-card-desc">Direct R2 OTA updates, FPS unlock toggle, Play Integrity &amp; KnoxPatch built-in.</div>
+          <div class="sc-title">OTA &amp; UN1CA Tweaks</div>
+          <div class="sc-desc">Direct R2 OTA updates, FPS unlock toggle, Play Integrity &amp; KnoxPatch built-in.</div>
         </div>
       </div>
     </section>
@@ -1288,7 +1362,7 @@
       </div>
     </section>
 
-    <!-- Official R2 Mirror Download Card -->
+    <!-- Official R2 Mirror Download Card (ONLY Download Button on Page) -->
     <section id="download" class="mirror-card">
       <div class="mirror-top">
         <div>
@@ -1647,15 +1721,13 @@
 
         if (data.version) {
           document.getElementById("r2-version").textContent = data.version;
-          document.getElementById("hero-dl-text").textContent = "Download " + data.version;
+          document.getElementById("hero-ver-tag").textContent = data.version;
           document.getElementById("r2-dl-label").textContent = "Download " + data.version;
           document.getElementById("mockup-ver").textContent = "K4_UN1CA " + data.version;
         }
         if (data.file) {
           const fullUrl = R2_BASE + data.file;
           document.getElementById("r2-file").textContent = data.file;
-          document.getElementById("nav-dl-btn").href = fullUrl;
-          document.getElementById("hero-dl-btn").href = fullUrl;
           document.getElementById("r2-dl-btn").href = fullUrl;
         }
         if (data.size) {
